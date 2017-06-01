@@ -15,3 +15,7 @@ def test_successful_launch():
 
 def test_unsuccessful_launch():
     assert launch('') == 1
+
+def test_rover_1_landing():
+    rovers = launch('tests/test.txt')
+    assert rovers[0].landing == ['1', '2', 'N']
