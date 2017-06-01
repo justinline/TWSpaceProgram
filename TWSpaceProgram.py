@@ -21,12 +21,15 @@ def launch(testfile):
         print('Failed launch, Bad Data. Please format text file correctly.')
         return 1
     planet = data.pop(0)
-    rovers = [Rover(data[i*2], data[(i*2)+1]) for i in range(int(len(data) / 2))]
+    rovers = []
+    for i in range(int(len(data) / 2)):
+        rovers.append(Rover(landing=data[i * 2], commands=data[(i * 2) + 1]))
     return rovers
 
 class Rover(object):
     '''Rover object that follows commands'''
     compass = {'N':0,'E':1,'S':2,'W':3}
+    turn = {'L':-1, 'R':1}
     rules =  [(0,1), (1,0), (0,-1), (-1,0)]
     def __init__(self, landing, commands):
         self.x = int(landing[0])
@@ -37,15 +40,14 @@ class Rover(object):
     def path(self):
         for i in self.commands:
             print(i)
-        pass
     
     def rotate(self, direction):
+        direction = self.turn[direction]
+        self.heading = (self.heading + direction) % 4
 
-        pass
-    
     def move(self):
-        pass
-
+        self.x += self.rules[self.heading][0]
+        self.y += self.rules[self.heading][1]
     def report(self):
         print(self.x, self.y, self.heading)
 
