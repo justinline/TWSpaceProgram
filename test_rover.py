@@ -1,6 +1,6 @@
 import pytest
 from TWSpaceProgram import upload_data,launch
-
+from space import Planet
 
 TEST = 'tests/test.txt'
 
@@ -25,7 +25,12 @@ class TestRovers(object):
         assert self.rovers[0].x == 1
         assert self.rovers[0].y == 2
         assert self.rovers[0].heading == 0
-    
+
+    def test_rover_2_landing(self):
+        assert self.rovers[1].x == 3
+        assert self.rovers[1].y == 3
+        assert self.rovers[1].heading == 1    
+
     def test_rover_numbers(self):
         assert len(self.rovers) == 2
 
@@ -36,3 +41,8 @@ class TestRovers(object):
     def test_change_heading(self):
         self.rovers[0].rotate('L')
         assert self.rovers[0].heading == 3
+
+class TestPlanet(object):
+    def test_1_planet(self):
+        self.planet = Planet(5,3)
+        assert self.planet.area == (5, 3)
