@@ -34,4 +34,5 @@ class TestRovers(object):
         assert self.rovers[0].y == 3
 
     def test_change_heading(self):
-        assert self.rovers[0].rotate('L') == 'W'
+        self.rovers[0].rotate('L')
+        assert self.rovers[0].heading == 3
