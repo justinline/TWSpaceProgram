@@ -10,7 +10,8 @@ def test_successful_upload():
     assert upload_data('tests/test.txt') == 0
 
 def test_successful_launch():
-    assert launch('tests/test.txt') != []
+    assert len(launch('tests/test.txt') ) > 0
+    # Check that more than 1 rover was created
 
 def test_unsuccessful_launch():
     assert launch('') == 1
