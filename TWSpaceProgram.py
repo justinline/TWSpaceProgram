@@ -30,3 +30,8 @@ def launch(testfile):
     for i in range(int(len(data) / 2)):
         rovers.append(Rover(landing=data[i * 2], commands=data[(i * 2) + 1], planet=planet))
     return rovers
+
+if len(sys.argv) > 1:
+    rovers = launch(sys.argv[1])
+    for rover in rovers:
+        rover.report()
