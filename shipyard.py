@@ -5,11 +5,12 @@ class Rover(object):
     turn = {'L':-1, 'R':1}
     rules =  [(0,1), (1,0), (0,-1), (-1,0)]
     
-    def __init__(self, landing, commands):
+    def __init__(self, landing, commands, planet):
         self.x = int(landing[0])
         self.y = int(landing[1])
         self.heading = self.compass[landing[2]]
         self.commands = list(commands[0])
+        self.planet = planet
 
     def path(self):
         for i in self.commands:
