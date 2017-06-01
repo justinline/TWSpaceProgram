@@ -27,8 +27,8 @@ def launch(testfile):
 class Rover(object):
     '''Rover object that follows commands'''
     def __init__(self, landing, commands):
-        self.x = landing[0]
-        self.y = landing[1]
+        self.x = int(landing[0])
+        self.y = int(landing[1])
         self.heading = landing[2]
         self.commands = list(commands[0]) # Breaks string into list of chars
 

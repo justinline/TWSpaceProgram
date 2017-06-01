@@ -18,4 +18,10 @@ def test_unsuccessful_launch():
 
 def test_rover_1_landing():
     rovers = launch('tests/test.txt')
-    assert rovers[0].landing == ['1', '2', 'N']
+    assert rovers[0].x == 1
+    assert rovers[0].y == 2
+    assert rovers[0].heading == 'N'
+
+def test_rover_numbers():
+    rovers = launch('tests/test.txt')
+    assert len(rovers) == 2
