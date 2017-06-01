@@ -25,5 +25,8 @@ class Rover(object):
         self.y += self.rules[self.heading][1]
 
     def report(self):
-        print(self.x, self.y, self.heading)
+        for direction, value in self.compass.items():
+            if value == self.heading:
+                facing = direction
+        print(self.x, self.y, facing)
 
