@@ -22,5 +22,13 @@ class TestRovers(object):
         assert self.rovers[0].x == 1
         assert self.rovers[0].y == 2
         assert self.rovers[0].heading == 'N'
+    
     def test_rover_numbers(self):
         assert len(self.rovers) == 2
+
+    def test_rover_move(self):
+        self.rovers[0].move()
+        assert self.rovers[0].y == 3
+
+    def test_change_heading(self):
+        assert self.rovers[0].rotate('L') == 'W'
