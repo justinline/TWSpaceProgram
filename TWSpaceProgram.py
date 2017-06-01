@@ -8,10 +8,33 @@ def upload_data(testfile):
     '''Opens and processes test file'''
     query = os.path.isfile(testfile)
     if query == False:
-        print('Could not upload launch coordinates to Rovers')
-        return 1
+        raise ValueError
     data = open(testfile, "r").readlines() 
     data = [line.strip('\n').split(' ') for line in data]
-    # launch(data)
-    return 0
+    return data
     
+def launch(testfile):
+    try:
+        data = upload_data(testfile)
+    except ValueError:
+        print('Failed launch, Bad Data. Please format text file correctly.')
+        return 1
+    landing = data.pop(0)
+    x, y = landing[0], landing[1]
+    print('X: ', x, 'Y: ', y)
+    print(len(data))
+    rovers = [Rover() for i in range(int(len(data) / 2))]
+    return rovers
+
+class Rover(object):
+
+    def __init__(self):
+        pass
+
+    def move(self):
+        pass
+    
+    def rotate(self):
+        pass
+
+    pass
