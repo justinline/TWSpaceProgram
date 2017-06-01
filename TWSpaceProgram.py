@@ -25,16 +25,22 @@ def launch(testfile):
     return rovers
 
 class Rover(object):
-
+    '''Rover object that follows commands'''
     def __init__(self, landing, commands):
-        self.landing = landing
-        self.commands = commands
-        pass
+        self.x = landing[0]
+        self.y = landing[1]
+        self.heading = landing[2]
+        self.commands = list(commands[0]) # Breaks string into list of chars
 
-    def move(self):
+    def path(self):
+        for i in self.commands:
+            print(i)
         pass
     
     def rotate(self):
+        pass
+    
+    def move(self):
         pass
 
     pass
