@@ -26,10 +26,12 @@ def launch(testfile):
 
 class Rover(object):
     '''Rover object that follows commands'''
+    compass = {'N':0,'E':1,'S':2,'W':3}
+    rules =  [(0,1), (1,0), (0,-1), (-1,0)]
     def __init__(self, landing, commands):
         self.x = int(landing[0])
         self.y = int(landing[1])
-        self.heading = landing[2]
+        self.heading = self.compass[landing[2]]
         self.commands = list(commands[0]) # Breaks string into list of chars
 
     def path(self):
@@ -37,10 +39,14 @@ class Rover(object):
             print(i)
         pass
     
-    def rotate(self):
+    def rotate(self, direction):
+
         pass
     
     def move(self):
         pass
+
+    def report(self):
+        print(self.x, self.y, self.heading)
 
     pass
