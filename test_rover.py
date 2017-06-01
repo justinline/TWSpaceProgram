@@ -45,6 +45,10 @@ class TestRovers(object):
         self.rovers[0].rotate('L')
         assert self.rovers[0].heading == 3
 
+    #TODO: Run through commands
+    
+    #TODO: Move and check end coordinates
+
 class TestPlanet(object):
     planet = Planet(5,3)
     rover = Rover([0, 0, 'N'], ['MRMMLM'], planet)

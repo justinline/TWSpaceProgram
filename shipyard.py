@@ -13,8 +13,8 @@ class Rover(object):
         self.planet = planet
 
     def path(self):
-        for i in self.commands:
-            print(i)
+        #TODO: run through command list and call move()/rotate()
+        pass
     
     def rotate(self, direction):
         direction = self.turn[direction]
