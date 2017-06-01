@@ -1,6 +1,9 @@
 import pytest
 from TWSpaceProgram import upload_data,launch
+
+from shipyard import Rover
 from space import Planet
+
 
 TEST = 'tests/test.txt'
 
@@ -43,6 +46,9 @@ class TestRovers(object):
         assert self.rovers[0].heading == 3
 
 class TestPlanet(object):
+    planet = Planet(5,3)
+    rover = Rover([0, 0, 'N'], ['MRMMLM'], planet)
     def test_1_planet(self):
-        self.planet = Planet(5,3)
         assert self.planet.area == (5, 3)
+    def test_rover_on_planet(self):
+        assert self.rover.planet == self.planet
