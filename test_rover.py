@@ -16,12 +16,11 @@ def test_successful_launch():
 def test_unsuccessful_launch():
     assert launch('') == 1
 
-def test_rover_1_landing():
+class TestRovers(object):
     rovers = launch('tests/test.txt')
-    assert rovers[0].x == 1
-    assert rovers[0].y == 2
-    assert rovers[0].heading == 'N'
-
-def test_rover_numbers():
-    rovers = launch('tests/test.txt')
-    assert len(rovers) == 2
+    def test_rover_1_landing(self):
+        assert self.rovers[0].x == 1
+        assert self.rovers[0].y == 2
+        assert self.rovers[0].heading == 'N'
+    def test_rover_numbers(self):
+        assert len(self.rovers) == 2
