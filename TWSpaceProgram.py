@@ -21,8 +21,6 @@ def launch(testfile):
         return 1
     landing = data.pop(0)
     x, y = landing[0], landing[1]
-    print('X: ', x, 'Y: ', y)
-    print(len(data))
     rovers = [Rover() for i in range(int(len(data) / 2))]
     return rovers
 
