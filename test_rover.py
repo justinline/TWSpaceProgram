@@ -19,8 +19,9 @@ def test_successful_launch():
     assert len(launch(TEST) ) > 0
     # Check that more than 1 rover was created
 
-def test_unsuccessful_launch():
-    assert launch('') == 1
+def test_unsuccessful_launch(capsys):
+    with pytest.raises(SystemExit):
+        assert launch('') == 1
 
 class TestRovers(object):
     rovers = launch(TEST)
