@@ -7,20 +7,20 @@ from shipyard import Rover
 from space import Planet
 
 
-def upload_data(testfile):
-    '''Opens and processes test file when called by launch()'''
-    query = os.path.isfile(testfile)
+def upload_data(filepath):
+    '''Opens and processes test file into a list of lists when called by launch()'''
+    query = os.path.isfile(filepath)
     if query == False:
         #TODO: Make this check more robust
         raise ValueError
-    data = open(testfile, "r").readlines() 
+    data = open(filepath, "r").readlines() 
     data = [line.strip('\n').split(' ') for line in data]
     return data
 
-def launch(testfile):
+def launch(filepath):
     '''Function to start the mission! Initialises Rovers with instructions'''
     try:
-        data = upload_data(testfile)
+        data = upload_data(filepath)
     except ValueError:
         print('Failed launch, Bad Data. Please format text file correctly.')
         return 1
