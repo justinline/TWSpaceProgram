@@ -1,6 +1,5 @@
 '''TW Space Program, launching Rovers onto mars!'''
 
-import os 
 import sys 
 
 from shipyard import Rover
@@ -9,21 +8,18 @@ from space import Planet
 
 def upload_data(filepath):
     '''Opens and processes test file into a list of lists when called by launch()'''
-    query = os.path.isfile(filepath)
-    if query == False:
-        #TODO: Make this check more robust
-        raise ValueError
-    data = open(filepath, "r").readlines() 
+    try:
+        data = open(filepath, "r").readlines() 
+    except IOError:
+        print("Launch Test Data was not found at the specified location:", filepath)
+        print("Please check file exists and try again")
+        return sys.exit(1)
     data = [line.strip('\n').split(' ') for line in data]
     return data
 
 def launch(filepath):
     '''Function to start the mission! Initialises Rovers with instructions'''
-    try:
-        data = upload_data(filepath)
-    except ValueError:
-        print('Failed launch, Bad Data. Please format text file correctly.')
-        return 1
+    data = upload_data(filepath)
     target = data.pop(0)
     planet = Planet(lat=int(target[0]), lon=int(target[1]))
     rovers = []
