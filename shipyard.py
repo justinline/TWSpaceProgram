@@ -13,8 +13,11 @@ class Rover(object):
         self.planet = planet
 
     def path(self):
-        #TODO: run through command list and call move()/rotate()
-        pass
+        for command in self.commands:
+            if command == 'M':
+                self.move()
+            else:
+                self.rotate(command)
     
     def rotate(self, direction):
         direction = self.turn[direction]
@@ -23,6 +26,7 @@ class Rover(object):
     def move(self):
         self.x += self.rules[self.heading][0]
         self.y += self.rules[self.heading][1]
+        #TODO: Check Boundaries - Needs rule
 
     def report(self):
         for direction, value in self.compass.items():
