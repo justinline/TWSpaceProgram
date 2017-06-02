@@ -32,7 +32,13 @@ class TestRovers(object):
     def test_rover_2_landing(self):
         assert self.rovers[1].x == 3
         assert self.rovers[1].y == 3
-        assert self.rovers[1].heading == 1    
+        assert self.rovers[1].heading == 1
+
+    def test_rover_1_report(self):
+        assert self.rovers[0].report() == "1 2 N"    
+
+    def test_rover_2_report(self):
+        assert self.rovers[1].report() == "3 3 E"   
 
     def test_rover_numbers(self):
         assert len(self.rovers) == 2
@@ -46,7 +52,7 @@ class TestRovers(object):
         assert self.rovers[0].heading == 3
 
     #TODO: Run through commands
-    
+
     #TODO: Move and check end coordinates
 
 class TestPlanet(object):

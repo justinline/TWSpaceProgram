@@ -34,4 +34,4 @@ def launch(testfile):
 if len(sys.argv) > 1:
     rovers = launch(sys.argv[1])
     for rover in rovers:
-        rover.report()
+        print(rover.report())

@@ -28,5 +28,5 @@ class Rover(object):
         for direction, value in self.compass.items():
             if value == self.heading:
                 facing = direction
-        print(self.x, self.y, facing)
+        return str(self.x) + " " + str(self.y) + " " + str(facing)
 
