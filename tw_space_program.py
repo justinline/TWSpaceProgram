@@ -12,7 +12,7 @@ class MissionData(object):
 
 def clean(line, split=False):
     line = line.strip('\n')
-    if split == True:
+    if split:
         line = line.split(' ')
     return line
 
@@ -35,8 +35,13 @@ def initialise_rovers(filepath):
     rovers = [Rover(landing=cmd[0], commands=cmd[1], planet=planet) for cmd in data.launch_cmds]
     return rovers
 
-if len(sys.argv) > 1:
-    rovers = initialise_rovers(sys.argv[1])
-    for rover in rovers:
-        rover.path()
-        print(rover.report())
+def main(args):
+    if len(args) == 2:
+        rovers = initialise_rovers(sys.argv[1])
+        for rover in rovers:
+            rover.execute_commands()
+            print(rover.report())
+    else:
+        print("usage: python3 tw_space_program.py <input.txt>")
+
+main(sys.argv)
