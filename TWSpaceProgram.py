@@ -28,7 +28,7 @@ def parse_test_data(filepath):
     data.launch_cmds = [(clean(f[i], split=True),clean(f[i+1])) for i in range(0,len(f),2)]
     return data
 
-def launch(filepath):
+def initialise_rovers(filepath):
     '''Function to start the mission! Initialises Rovers with instructions'''
     data = parse_test_data(filepath)
     planet = Planet(lat=int(data.planet[0]), lon=int(data.planet[1]))
@@ -36,7 +36,7 @@ def launch(filepath):
     return rovers
 
 if len(sys.argv) > 1:
-    rovers = launch(sys.argv[1])
+    rovers = initialise_rovers(sys.argv[1])
     for rover in rovers:
         rover.path()
         print(rover.report())

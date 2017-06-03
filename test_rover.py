@@ -1,5 +1,5 @@
 import pytest
-from TWSpaceProgram import upload_data,launch
+from TWSpaceProgram import upload_data,initialise_rovers
 
 from shipyard import Rover
 from space import Planet
@@ -16,12 +16,12 @@ def test_successful_upload():
     assert upload_data(TEST) == 0
 
 def test_successful_launch():
-    assert len(launch(TEST) ) > 0
+    assert len(initialise_rovers(TEST) ) > 0
     # Check that more than 1 rover was created
 
-def test_unsuccessful_launch(capsys):
+def test_unsuccessful_initialise_rovers(capsys):
     with pytest.raises(SystemExit):
-        assert launch('') == 1
+        assert initialise_rovers('') == 1
 
 class TestSingleRover(object):
     planet = Planet(5,5)
@@ -35,7 +35,7 @@ class TestSingleRover(object):
         assert self.rover.heading == 3
 
 class TestRovers(object):
-    rovers = launch(TEST)
+    rovers = initialise_rovers(TEST)
     def test_rover_1_landing(self):
         assert self.rovers[0].x == 1
         assert self.rovers[0].y == 2
