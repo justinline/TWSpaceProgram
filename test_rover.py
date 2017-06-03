@@ -23,6 +23,17 @@ def test_unsuccessful_launch(capsys):
     with pytest.raises(SystemExit):
         assert launch('') == 1
 
+class TestSingleRover(object):
+    planet = Planet(5,5)
+    rover = Rover(['0', '0', 'N'], '', planet)
+    def test_move(self):
+        self.rover.move()
+        assert self.rover.y == 1
+
+    def test_change_heading(self):
+        self.rover.rotate('L')
+        assert self.rover.heading == 3
+
 class TestRovers(object):
     rovers = launch(TEST)
     def test_rover_1_landing(self):
@@ -34,23 +45,19 @@ class TestRovers(object):
         assert self.rovers[1].x == 3
         assert self.rovers[1].y == 3
         assert self.rovers[1].heading == 1
-
+    
+    # Make Rovers follow their paths.
+    for rover in rovers:
+        rover.path() 
+    
     def test_rover_1_report(self):
-        assert self.rovers[0].report() == "1 2 N"    
+        assert self.rovers[0].report() == "1 3 N"    
 
     def test_rover_2_report(self):
-        assert self.rovers[1].report() == "3 3 E"   
+        assert self.rovers[1].report() == "5 1 E"   
 
     def test_rover_numbers(self):
         assert len(self.rovers) == 2
-
-    def test_rover_move(self):
-        self.rovers[0].move()
-        assert self.rovers[0].y == 3
-
-    def test_change_heading(self):
-        self.rovers[0].rotate('L')
-        assert self.rovers[0].heading == 3
 
     #TODO: Run through commands
 
