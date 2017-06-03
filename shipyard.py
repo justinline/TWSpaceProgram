@@ -9,7 +9,7 @@ class Rover(object):
         self.x = int(landing[0])
         self.y = int(landing[1])
         self.heading = self.compass[landing[2]]
-        self.commands = list(commands[0])
+        self.commands = commands
         self.planet = planet
 
     def path(self):
