@@ -12,7 +12,7 @@ class Rover(object):
         self.commands = commands
         self.planet = planet
 
-    def path(self):
+    def execute_commands(self):
         for command in self.commands:
             if command == 'M':
                 self.move()
