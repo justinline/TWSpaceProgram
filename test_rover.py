@@ -48,7 +48,7 @@ class TestRovers(object):
     
     # Make Rovers follow their paths.
     for rover in rovers:
-        rover.path() 
+        rover.execute_commands() 
     
     def test_rover_1_report(self):
         assert self.rovers[0].report() == "1 3 N"    
@@ -58,10 +58,6 @@ class TestRovers(object):
 
     def test_rover_numbers(self):
         assert len(self.rovers) == 2
-
-    #TODO: Run through commands
-
-    #TODO: Move and check end coordinates
 
 class TestPlanet(object):
     planet = Planet(5,3)
