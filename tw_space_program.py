@@ -56,5 +56,5 @@ def main(args):
     else:
         print("usage: python3 tw_space_program.py <input.txt>")
 
-
-main(sys.argv)
+if __name__ == "__main__":
+    main(sys.argv)
