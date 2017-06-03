@@ -1,5 +1,5 @@
 '''
-space.py contains objects for Planets and other objects that may 
+space.py contains objects for Planets and other objects that may
 interact with ships in the tw_space_program
 '''
 
