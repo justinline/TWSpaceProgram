@@ -16,7 +16,6 @@ def parse_test_data(filepath):
         data = MissionData(filepath)    
     except IOError:
         print("Launch Test Data was not found at the specified location:", filepath)
-        print("Please check file exists and try again")
         return sys.exit(1)
     data.planet = data.file[0].strip('\n').split(' ')
     f = data.file[1:]
