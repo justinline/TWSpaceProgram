@@ -9,7 +9,6 @@ class MissionData(object):
     '''Object for Storing Mission Test Files'''
     def __init__(self, filepath):
         self.file = open(filepath, "r").readlines()
-    pass
 
 def parse_test_data(filepath):
     '''Opens and processes test file into a list of lists when called by launch()'''
